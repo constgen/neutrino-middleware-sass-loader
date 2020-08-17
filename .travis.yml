@@ -1,0 +1,24 @@
+os: linux
+language: node_js
+node_js:
+  - "10"
+install:
+  - npm install
+cache:
+  directories:
+  - node_modules
+script:
+  - npm test
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+deploy:
+  edge: true
+  provider: npm
+  api_token: "$NPM_TOKEN"
+  cleanup: true
+  access: public
+  on:
+    tags: true
+    branch: master

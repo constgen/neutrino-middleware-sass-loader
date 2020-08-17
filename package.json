@@ -1,0 +1,51 @@
+{
+	"name": "neutrino-middleware-sass-loader",
+	"version": "0.1.0",
+	"description": "Neutrino Sass loader middleware",
+	"main": "src/index.js",
+	"author": "Constantine Genchevsky <const.gen@gmail.com>",
+	"license": "GPL-3.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/constgen/neutrino-middleware-sass-loader.git"
+	},
+	"homepage": "https://github.com/constgen/neutrino-middleware-sass-loader",
+	"keywords": [
+		"neutrino",
+		"neutrino-middlware",
+		"webpack",
+		"loader",
+		"sass"
+	],
+	"scripts": {
+		"eslint": "eslint ./",
+		"pretest": "npm run eslint -- --max-warnings 0",
+		"lint": "npm run eslint -- --fix"
+	},
+	"dependencies": {
+		"deepmerge": "4.2.2",
+		"arrify": "2.0.1",
+		"sass-loader": "9.0.3",
+		"sass": "1.26.10",
+		"resolve-url-loader": "3.1.1",
+		"js-to-styles-var-loader": "1.1.0"
+	},
+	"devDependencies": {
+		"neutrino": "9.1.0",
+		"eslint": "7.7.0",
+		"@constgen/eslint": "2.1.0"
+	},
+	"peerDependencies": {
+		"neutrino": "^9.0.0"
+	},
+	"files": [
+		"/src",
+		"README.md",
+		"LICENSE",
+		"package.json"
+	],
+	"engines": {
+		"node": ">=10.13",
+		"npm": ">=5.4.0"
+	}
+}
