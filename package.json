@@ -28,7 +28,7 @@
 		"sass-loader": "9.0.3",
 		"sass": "1.26.10",
 		"resolve-url-loader": "3.1.1",
-		"js-to-styles-var-loader": "1.1.0"
+		"js-to-styles-var-loader": "1.2.0"
 	},
 	"devDependencies": {
 		"neutrino": "9.1.0",

@@ -2,8 +2,6 @@ let arrify    = require('arrify')
 let deepmerge = require('deepmerge')
 let dartSass  = require('sass')
 
-require('./fixes')
-
 module.exports = function (customSettings = {}) {
 	return function (neutrino) {
 		const SASS_EXTENSIONS        = /\.s[ac]ss$/
