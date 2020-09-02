@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/neutrino-middleware-sass-loader.svg)](https://www.npmjs.com/package/neutrino-middleware-sass-loader)
 [![npm](https://img.shields.io/npm/dt/neutrino-middleware-sass-loader.svg)](https://www.npmjs.com/package/neutrino-middleware-sass-loader)
 
-`neutrino-middleware-sass-loader` is a [Neutrino](https://neutrino.js.org) middleware for compiling styles with [Dart Sass](https://sass-lang.com/dart-sass). This middleware only transforms Sass to CSS. It is recommended to have `@neutrinojs/style-loader` (or its substitution) in the configuration to be able to compile Sass styles to JavaScript modules.
+`neutrino-middleware-sass-loader` is a [Neutrino](https://neutrino.js.org) middleware for compiling styles with [Dart Sass](https://sass-lang.com/dart-sass). This middleware only transforms Sass to CSS. It is recommended to have `@neutrinojs/style-loader` (or its substitution) in the configuration to be able to compile Sass styles to JavaScript modules. Both SCSS and SASS syntaxes are supported.
 
 ## Requirements
 
