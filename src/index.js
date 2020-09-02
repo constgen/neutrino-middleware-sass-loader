@@ -5,6 +5,8 @@ let dartSass  = require('sass')
 module.exports = function (customSettings = {}) {
 	return function (neutrino) {
 		const SASS_EXTENSIONS        = /\.s[ac]ss$/
+		const SASS_EXTENSION         = /\.sass$/
+		const SCSS_EXTENSION         = /\.scss$/
 		const SASS_MODULE_EXTENSIONS = /\.module.s[ac]ss$/
 		let { config }               = neutrino
 		let styleRule                = config.module.rules.get('style')
@@ -47,30 +49,50 @@ module.exports = function (customSettings = {}) {
 			.exclude
 				.merge(settings.exclude || [])
 				.end()
-			.use('resolve-url')
-				.loader(require.resolve('resolve-url-loader'))
-				.tap((options = {}) => options)
-				.tap(options => deepmerge({
-					root     : '',
-					sourceMap: true,
-					keepQuery: true,
-					debug    : false,
-					silent   : false
-				}, options))
+			.oneOf('scss')
+				.test(SCSS_EXTENSION)
+				.use('sass')
+					.tap((options = {}) => options)
+					.end()
 				.end()
-			.use('sass')
-				.loader(require.resolve('sass-loader'))
-				.tap((options = {}) => options)
-				.tap(options => deepmerge({
-					sourceMap      : true,
-					implementation : dartSass,
-					webpackImporter: true,
-					sassOptions    : {}
-				}, options))
-				.tap(options => deepmerge(options, { sassOptions: settings.sass }))
+			.oneOf('sass')
+				.test(SASS_EXTENSION)
+				.use('sass')
+					.tap((options = {}) => deepmerge({
+						sassOptions: {
+							indentedSyntax: true
+						}
+					}, options))
+					.end()
 				.end()
-			.use('sass-var')
-				.loader(require.resolve('js-to-styles-var-loader'))
-				.end()
+
+		sassRule.oneOfs.values().forEach(function (oneOf) {
+			oneOf
+				.use('resolve-url')
+					.before('sass')
+					.loader(require.resolve('resolve-url-loader'))
+					.tap((options = {}) => options)
+					.tap(options => deepmerge({
+						root     : '',
+						sourceMap: true,
+						keepQuery: true,
+						debug    : false,
+						silent   : false
+					}, options))
+					.end()
+				.use('sass')
+					.loader(require.resolve('sass-loader'))
+					.tap(options => deepmerge({
+						sourceMap      : true,
+						implementation : dartSass,
+						webpackImporter: true
+					}, options))
+					.tap(options => deepmerge(options, { sassOptions: settings.sass }))
+					.end()
+				.use('style-var')
+					.after('sass')
+					.loader(require.resolve('js-to-styles-var-loader'))
+					.end()
+		})
 	}
 }
