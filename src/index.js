@@ -7,7 +7,7 @@ module.exports = function (customSettings = {}) {
 		const SASS_EXTENSIONS        = /\.s[ac]ss$/
 		const SASS_EXTENSION         = /\.sass$/
 		const SCSS_EXTENSION         = /\.scss$/
-		const SASS_MODULE_EXTENSIONS = /\.module.s[ac]ss$/
+		const SASS_MODULE_EXTENSIONS = /\.module\.s[ac]ss$/
 		let { config }               = neutrino
 		let styleRule                = config.module.rules.get('style')
 		let sassRule                 = config.module.rule('sass')
